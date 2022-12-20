@@ -1,6 +1,7 @@
 package hiber.service;
 
 import hiber.dao.CarDao;
+import hiber.dao.UserDao;
 import hiber.model.Car;
 import hiber.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 @Service
 public class CarServiceImpl implements CarService{
+    private final CarDao carDao;
+
     @Autowired
-    private CarDao carDao;
+    public CarServiceImpl(CarDao carDao){
+        this.carDao = carDao;
+    }
 
     @Transactional
     @Override

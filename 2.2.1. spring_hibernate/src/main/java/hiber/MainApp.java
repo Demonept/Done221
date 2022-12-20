@@ -23,23 +23,18 @@ public class MainApp {
       userService.add(new User("User2", "Lastname2", "user2@mail.ru"));
       userService.add(new User("User3", "Lastname3", "user3@mail.ru"));
       userService.add(new User("User4", "Lastname4", "user4@mail.ru"));
-
-      Car car1 = new Car("lada", 2312313);
-      Car car2 = new Car("bmmw", 1231456);
-      Car car3 = new Car("chevrole", 6663581);
-
-
-      userService.add(user1);
-      car1.setUser(user1);
-      carService.add(car1);
       User user2 = new User("newUser2", "newUserLast2", "gmail2@mail.com");
       User user3 = new User("newUser3", "newUserLast3", "gmail3@mail.com");
 
+      Car car1 = new Car("lada", 2312313, user1);
+      Car car2 = new Car("bmmw", 1231456, user2);
+      Car car3 = new Car("chevrole", 656351, user3);
+
+      userService.add(user1);
+      carService.add(car1);
       userService.add(user2);
-      car2.setUser(user2);
       carService.add(car2);
       userService.add(user3);
-      car3.setUser(user3);
       carService.add(car3);
 
       List<User> users = userService.listUsers();
@@ -51,7 +46,7 @@ public class MainApp {
          System.out.println();
       }
 
-      Object owner = carService.getUser("chevrole", 6663581);
+      Object owner = carService.getUser("chevrole", 656351);
       System.out.println(((User)owner).getFirstName() + " id : " +  ((User)owner).getId());
       context.close();
    }
